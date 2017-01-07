@@ -60,6 +60,12 @@ function plot(metrics){
                     position: 'outer-right',
                 },
             },
+            y: {
+                label: {
+                    text: "P, R, F1",
+                    position: 'outer-top',
+                },
+            },
         },
     });
 
@@ -121,13 +127,13 @@ function plot(metrics){
                     text: "Recall",
                     position: 'outer-right',
                 },
+            },
             y: {
                 label: {
                     text: "Precision",
                     position: 'outer-top',
                 },
             },
-            }
         },
     });
 }
