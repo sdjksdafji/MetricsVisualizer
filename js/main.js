@@ -18,13 +18,18 @@ $(document).ready(function() {
 });
 
 function plot(metrics){
-    if(metrics.area_under_roc){
+    if(metrics.area_under_roc && metrics.area_under_roc >= 0){
         aucLabel.innerText ="AUC: " + metrics.area_under_roc;
+    }else{
+        aucLabel.innerText ="";
     }
 
-    if(metrics.area_under_pr){
+    if(metrics.area_under_pr && metrics.area_under_pr >= 0){
         auprLabel.innerText = "AUPR: " + metrics.area_under_pr;
+    }else{
+        auprLabel.innerText = "";
     }
+
     metrics.threshold_precision.unshift(["threshold_precision", "Precision"]);
     metrics.threshold_recall.unshift(["threshold_recall", "Recall"]);
     metrics.threshold_f1_score.unshift(["threshold_f1_score", "F1 Score"]);
@@ -136,6 +141,28 @@ function plot(metrics){
             },
         },
     });
+
+    if(metrics.feature_importance){
+        $("#featureImportanceChartRow").show();
+        metrics.feature_importance.sort(function(a, b){return b[1] - a[1]})
+        var chart = c3.generate({
+            bindto: '#featureImportanceChart',
+            data: {
+                columns: metrics.feature_importance,
+                type: 'bar'
+            },
+            bar: {
+                width: {
+                    ratio: 0.9
+                }
+            },
+            tooltip: {
+                show: false
+            },
+        });
+    }else{
+        $("#featureImportanceChartRow").hide();
+    }
 }
 
 function transposeArray(array, arrayLength){
