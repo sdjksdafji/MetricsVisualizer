@@ -145,10 +145,19 @@ function plot(metrics){
     if(metrics.feature_importance){
         $("#featureImportanceChartRow").show();
         metrics.feature_importance.sort(function(a, b){return b[1] - a[1]})
+
+        $('#featureImportanceTable').DataTable( {
+            data: metrics.feature_importance,
+            columns: [
+                { title: "Name" },
+                { title: "Importance Score" },
+            ]
+        });
+
         var chart = c3.generate({
             bindto: '#featureImportanceChart',
             data: {
-                columns: metrics.feature_importance,
+                columns: metrics.feature_importance.slice(0,15),
                 type: 'bar'
             },
             bar: {

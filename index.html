@@ -39,6 +39,10 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
+    <!-- load datatable -->
+    <link href="./datatable/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+    <script src="./datatable/jquery.dataTables.min.js"></script>
+
     <script src="./js/sampleJson.js"></script>
     <script src="./js/main.js"></script>
     <link href="./css/ButtonFile.css" rel="stylesheet" type="text/css">
@@ -75,7 +79,11 @@
         <p><div id="chart"></div></p>
       </div>
 
-      <div class="row marketing" id="featureImportanceChartRow"">
+      <div class="row marketing">
+        <p><table id="featureImportanceTable" class="display" width="100%"></table></p>
+      </div>
+
+      <div class="row marketing" id="featureImportanceChartRow">
         <p><div id="featureImportanceChart"></div></p>
       </div>
 
