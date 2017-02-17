@@ -172,6 +172,12 @@ function plot(metrics){
     }else{
         $("#featureImportanceChartRow").hide();
     }
+
+    if(metrics.description){
+        $("#description").html(metrics.description);
+    }else{
+        $("#description").hide();
+    }
 }
 
 function transposeArray(array, arrayLength){
